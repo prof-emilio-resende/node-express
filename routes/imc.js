@@ -1,4 +1,3 @@
-const { json } = require('express');
 var express = require('express');
 var router = express.Router();
 
@@ -14,7 +13,8 @@ function translateImc(imc) {
 }
 
 /* POST imc calculation. */
-router.post('/calculate', function(req, res, next) {
+router.post('/calculate', function (req, res) {
+    console.log('initialize calculate...');
     const { height, weight } = req.body;
     const imc = calculateImc(height, weight);
     const imcDescription = translateImc(imc);
